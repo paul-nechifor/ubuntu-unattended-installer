@@ -57,9 +57,9 @@ extract_image() {
 
 change_image() {
     echo "Changing the image."
-    cp "$root/txt.cfg" "$image_dir"/isolinux
-    cp "$root/ks.cfg" "$image_dir"
-    cp "$root/my.seed" "$image_dir"/preseed
+    cp "$root/config/txt.cfg" "$image_dir"/isolinux
+    cp "$root/config/ks.cfg" "$image_dir"
+    cp "$root/config/my.seed" "$image_dir"/preseed
 }
 
 create_new_iso() {
