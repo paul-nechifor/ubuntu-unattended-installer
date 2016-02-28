@@ -1,40 +1,37 @@
 # Install the Ubuntu Desktop.
 tasksel tasksel/first multiselect ubuntu-desktop
 
-unattended-upgrades unattended-upgrades/enable_auto_updates boolean false
-
 # Preseed empty to avoid the summary page.
 ubiquity ubiquity/summary string empty
 
-# Reboot automatically, add 'noprompt' to the kernel command line.
+# reboot automatically, add 'noprompt' to the kernel command line.
 ubiquity ubiquity/reboot boolean true
 
-ubiquity ubiquity/keep-installed string icedtea6-plugin openoffice.org
-ubiquity ubiquity/download_updates boolean false
+ubiquity  ubiquity/keep-installed string icedtea6-plugin openoffice.org
+
+# Use non-free packages.
 ubiquity ubiquity/use_nonfree boolean true
 
-ubiquity languagechooser/language-name select Romanian
+# Disable automatic (interactive) keymap detection.
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select us
+
+ubiquity languagechooser/language-name select Română
 ubiquity countrychooser/shortlist select RO
 ubiquity localechooser/supported-locales ro_RO.UTF-8
 ubiquity console-keymaps-at/keymap select ro
 
-d-i debian-installer/locale string ro_RO
-d-i console-setup/ask_detect boolean false
-d-i console-setup/layoutcode string ro
-d-i keyboard-configuration/xkb-keymap select ro
-d-i keyboard-configuration/xkb-keymap select 
-
-d-i localechooser/supported-locales multiselect ro_RO, en_US
-d-i oem-config/install-language-support boolean true
-d-i pkgsel/language-packs multiselect en, ro
-
-# Disable network configuration entirely. This is useful for cdrom
-# installations on non-networked devices where the network questions,
-# warning and long timeouts are a nuisance.
+# Disable network configuration entirely. This is useful for cdrom installations
+# on non-networked devices where the network questions, warning and long
+# timeouts are a nuisance.
 d-i netcfg/enable boolean false
 
+# If non-free firmware is needed for the network or other hardware, you can
+# configure the installer to always try to load it, without prompting. Or change
+# to false to disable asking.
 d-i hw-detect/load_firmware boolean true
 
+# To create a normal user account.
 d-i passwd/user-fullname string p
 d-i passwd/username string p
 d-i passwd/user-password password p
@@ -42,7 +39,13 @@ d-i passwd/user-password-again password p
 
 # Controls whether or not the hardware clock is set to UTC.
 d-i clock-setup/utc boolean true
+
+# You may set this to any valid setting for $TZ; see the contents of
+# /usr/share/zoneinfo/ for valid values.
 d-i time/zone string Europe/London
+
+# Controls whether to use NTP to set the clock during the install
+d-i clock-setup/ntp boolean true
 
 d-i partman-auto/method string lvm
 d-i partman-lvm/device_remove_lvm boolean true
@@ -63,16 +66,19 @@ d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
-# Configure the sources.list.
+# You can choose to install restricted and universe software, or to install
+# software from the backports repository.
 d-i apt-setup/extras boolean true
 d-i apt-setup/multiverse boolean true
 d-i apt-setup/partner boolean true
 d-i apt-setup/restricted boolean true
 d-i apt-setup/universe boolean true
 
-d-i pkgsel/update-policy select none
+# Policy for applying updates. May be "none" (no automatic updates),
+# "unattended-upgrades" (install security updates automatically), or "landscape"
+# (manage system with Landscape).
+d-i pkgsel/update-policy select unattended-upgrades
 
-### Boot loader installation
-# This is fairly safe to set, it makes grub install automatically to the MBR
-# if no other operating system is detected on the machine.
-# d-i grub-installer/only_debian boolean true
+# This is fairly safe to set, it makes grub install automatically to the MBR if
+# no other operating system is detected on the machine.
+d-i grub-installer/only_debian boolean true
