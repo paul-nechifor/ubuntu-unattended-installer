@@ -4,9 +4,9 @@ Create an ISO image that automatically installs Ubuntu Desktop.
 
 ## Usage
 
-Run:
+Build the image with:
 
-    ./create
+    ./build
 
 That will create the ISO image in `./workdir/new.iso`.
 
