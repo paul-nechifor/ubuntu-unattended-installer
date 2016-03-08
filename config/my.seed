@@ -82,3 +82,5 @@ d-i pkgsel/update-policy select unattended-upgrades
 # This is fairly safe to set, it makes grub install automatically to the MBR if
 # no other operating system is detected on the machine.
 d-i grub-installer/only_debian boolean true
+
+ubiquity ubiquity/success_command string bash /cdrom/install.sh
