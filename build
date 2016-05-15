@@ -2,8 +2,9 @@
 
 root="$(cd "$(dirname "$BASH_SOURCE")"; pwd)"
 
-iso_location_dir="http://cdimage.ubuntu.com/daily-live/current"
-iso_name="xenial-desktop-amd64.iso"
+
+iso_location_dir="http://releases.ubuntu.com/16.04"
+iso_name="ubuntu-16.04-desktop-amd64.iso"
 iso_file="$root/workdir/downloaded.iso"
 image_dir="$root/workdir/image"
 new_iso="$root/workdir/new.iso"

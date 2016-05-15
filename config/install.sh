@@ -12,6 +12,7 @@ X-GNOME-Autostart-enabled=true
 ' > /target/home/p/.config/autostart/install.desktop
 
 echo '#!/bin/bash -e
+# export DEBIAN_FRONTEND=noninteractive
 sudo true; wget -q -O- https://github.com/paul-nechifor/dotfiles/raw/master/install.sh | bash -s - infect
 # rm -f /install.sh
 rm -f /home/p/.config/autostart/install.desktop
