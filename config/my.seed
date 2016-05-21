@@ -1,6 +1,9 @@
 # See https://help.ubuntu.com/16.04/installation-guide/example-preseed.txt
 
-d-i debian-installer/locale string ro_RO
+d-i debian-installer/language string ro
+d-i debian-installer/country string RO
+d-i debian-installer/locale string ro_RO.UTF-8
+d-i localechooser/supported-locales multiselect ro_RO.UTF-8, en_US.UTF-8
 
 d-i console-setup/ask_detect boolean false
 d-i keyboard-configuration/xkb-keymap select ro
