@@ -5,7 +5,7 @@ chmod 777 -R /target/home/p/.config
 
 echo '[Desktop Entry]
 Type=Application
-Exec=gnome-terminal -x bash --login -c /install.sh
+Exec=xterm -e /install.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

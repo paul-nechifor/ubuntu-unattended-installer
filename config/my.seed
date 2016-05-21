@@ -1,3 +1,10 @@
+# See https://help.ubuntu.com/16.04/installation-guide/example-preseed.txt
+
+d-i debian-installer/locale string ro_RO
+
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select ro
+
 # Install the Ubuntu Desktop.
 tasksel tasksel/first multiselect ubuntu-desktop
 
@@ -37,12 +44,9 @@ d-i passwd/username string p
 d-i passwd/user-password password p
 d-i passwd/user-password-again password p
 
-# # Controls whether or not the hardware clock is set to UTC.
-# d-i clock-setup/utc boolean true
-
-# # You may set this to any valid setting for $TZ; see the contents of
-# # /usr/share/zoneinfo/ for valid values.
-# d-i time/zone string Europe/London
+# Clock and time zone setup
+d-i clock-setup/utc boolean true
+d-i time/zone string Europe/London
 
 # # Controls whether to use NTP to set the clock during the install
 # d-i clock-setup/ntp boolean true
@@ -83,4 +87,4 @@ d-i apt-setup/universe boolean true
 # # no other operating system is detected on the machine.
 # d-i grub-installer/only_debian boolean true
 
-# ubiquity ubiquity/success_command string bash /cdrom/install.sh
+ubiquity ubiquity/success_command string bash /cdrom/install.sh
