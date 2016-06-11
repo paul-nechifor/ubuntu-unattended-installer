@@ -2,8 +2,8 @@
 
 Create an ISO image that automatically installs Ubuntu Desktop 16.04.
 
-This image is used for testing since the password is `p` and `sudo` works
-without a password.
+This image is used for testing my provisioning scripts. It is not secure since
+it uses `p` as the password and `sudo` works without a password prompt.
 
 ## Usage
 
@@ -17,7 +17,6 @@ VirtualBox.
 ## TODO
 
 - boot without a password so that the script runs
-- fix the keyboard layout/language problem
 - find out how to answer questions during `apt-get`
 
 ## License

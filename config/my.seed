@@ -17,8 +17,6 @@ ubiquity ubiquity/summary string empty
 # reboot automatically, add 'noprompt' to the kernel command line.
 ubiquity ubiquity/reboot boolean true
 
-# ubiquity  ubiquity/keep-installed string icedtea6-plugin openoffice.org
-
 # Use non-free packages.
 ubiquity ubiquity/use_nonfree boolean true
 
@@ -31,9 +29,7 @@ ubiquity countrychooser/shortlist select RO
 ubiquity localechooser/supported-locales ro_RO.UTF-8
 ubiquity console-keymaps-at/keymap select ro
 
-# Disable network configuration entirely. This is useful for cdrom installations
-# on non-networked devices where the network questions, warning and long
-# timeouts are a nuisance.
+# Disable network configuration entirely.
 d-i netcfg/enable boolean false
 
 # If non-free firmware is needed for the network or other hardware, you can
@@ -41,13 +37,13 @@ d-i netcfg/enable boolean false
 # to false to disable asking.
 d-i hw-detect/load_firmware boolean true
 
-# To create a normal user account.
+# Create user `p` with password `p`.
 d-i passwd/user-fullname string p
 d-i passwd/username string p
 d-i passwd/user-password password p
 d-i passwd/user-password-again password p
 
-# Clock and time zone setup
+# Clock and time zone setup.
 d-i clock-setup/utc boolean true
 d-i time/zone string Europe/London
 
@@ -60,21 +56,14 @@ d-i time/zone string Europe/London
 # d-i partman-lvm/confirm boolean true
 # d-i partman-lvm/confirm_nooverwrite boolean true
 
-# You can choose one of the three predefined partitioning recipes:
-# - atomic: all files in one partition
-# - home:   separate /home partition
-# - multi:  separate /home, /var, and /tmp partitions
+# Create one partition containing everything and don't prompt.
 d-i partman-auto/choose_recipe select atomic
-
-# This makes partman automatically partition without confirmation, provided
-# that you told it what to do using one of the methods above.
 d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
-# You can choose to install restricted and universe software, or to install
-# software from the backports repository.
+# Use all software repositories.
 d-i apt-setup/extras boolean true
 d-i apt-setup/multiverse boolean true
 d-i apt-setup/partner boolean true
