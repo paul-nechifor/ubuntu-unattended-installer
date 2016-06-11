@@ -16,7 +16,6 @@ VirtualBox.
 
 ## TODO
 
-- boot without a password so that the script runs
 - find out how to answer questions during `apt-get`
 
 ## License
