@@ -1,6 +1,6 @@
 # Ubuntu Unattended Installer
 
-Create an ISO image that automatically installs Ubuntu Desktop 16.04.
+Create an ISO image that automatically installs Ubuntu Desktop 18.04.
 
 This image is used for testing my provisioning scripts. It is not secure since
 it uses `p` as the password and `sudo` works without a password prompt.

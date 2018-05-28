@@ -3,8 +3,8 @@
 root="$(cd "$(dirname "$BASH_SOURCE")"; pwd)"
 
 
-iso_location_dir="http://releases.ubuntu.com/16.04"
-iso_name="ubuntu-16.04-desktop-amd64.iso"
+iso_location_dir="http://releases.ubuntu.com/18.04"
+iso_name="ubuntu-18.04-desktop-amd64.iso"
 iso_file="$root/workdir/downloaded.iso"
 image_dir="$root/workdir/image"
 new_iso="$root/workdir/new.iso"
@@ -25,6 +25,7 @@ check_requirements() {
 }
 
 download_image() {
+    local checksum expected_checksums
     if [[ -e "$iso_file" ]]; then
         echo "ISO file exists. Won't download it again."
         return
@@ -34,8 +35,8 @@ download_image() {
 
     echo "Computing checksum..."
 
-    local checksum="$(sha256sum "$iso_file" | awk '{print $1}')"
-    local expected_checksums="$(
+    checksum="$(sha256sum "$iso_file" | awk '{print $1}')"
+    expected_checksums="$(
         wget "$iso_location_dir/SHA256SUMS" -O- 2>/dev/null
     )"
 
