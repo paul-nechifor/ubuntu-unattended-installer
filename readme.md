@@ -1,3 +1,7 @@
+# This repository has been moved to [gitlab.com/paul-nechifor/ubuntu-unattended-installer](http://gitlab.com/paul-nechifor/ubuntu-unattended-installer).
+
+Old readme:
+
 # Ubuntu Unattended Installer
 
 Create an ISO image that automatically installs Ubuntu Desktop 18.04.
